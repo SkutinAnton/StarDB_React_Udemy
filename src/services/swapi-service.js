@@ -57,7 +57,7 @@ export default class SwapiService {
 
   transformPerson(person) {
     return {
-      id: this._extractId(person),
+      id: this.findId(person),
       name: person.name,
       gender: person.gender,
       birthYear: person.birthYear,
@@ -67,7 +67,7 @@ export default class SwapiService {
 
   transformStarship(starship) {
     return {
-      id: this._extractId(starship),
+      id: this.findId(starship),
       name: starship.name,
       model: starship.model,
       manufacturer: starship.manufacturer,
