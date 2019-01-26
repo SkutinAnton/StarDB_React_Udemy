@@ -45,7 +45,7 @@ export default class SwapiService {
     return link.url.match(regexp)[1];
   }
 
-  transformPlanet(planet) {
+  transformPlanet = (planet) => {
     return {
       id: this.findId(planet),
       name: planet.name,
@@ -55,7 +55,7 @@ export default class SwapiService {
     }
   }
 
-  transformPerson(person) {
+  transformPerson = (person) => {
     return {
       id: this.findId(person),
       name: person.name,
@@ -65,7 +65,7 @@ export default class SwapiService {
     }
   }
 
-  transformStarship(starship) {
+  transformStarship = (starship) => {
     return {
       id: this.findId(starship),
       name: starship.name,
