@@ -16,7 +16,7 @@ export default class SwapiService {
   }
 
   async getPerson(id) {
-    const person = this.getResource(`people/${id}`);
+    const person = await this.getResource(`people/${id}`);
     return this.transformPerson(person);
   }
 
@@ -36,7 +36,7 @@ export default class SwapiService {
   }
 
   async getStarship(id) {
-    const starship = this.getResource(`starships/${id}`);
+    const starship = await this.getResource(`starships/${id}`);
     return this.transformStarship(starship);
   }
 
