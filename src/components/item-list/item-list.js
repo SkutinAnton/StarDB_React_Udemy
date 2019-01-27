@@ -14,12 +14,12 @@ export default class ItemList extends Component {
 
   componentDidMount() {
     this.swapiService.getAllPeople().then((peopleList) => {
-      this.setState({peopleList});
+      this.setState({ peopleList });
     })
   }
 
   renderItems(arr) {
-    return arr.map(({id, name}) => {
+    return arr.map(({ id, name }) => {
       return (
         <li className="list-group-item" key={id} onClick={() => this.props.onItemSelected(id)}>
           {name}
@@ -32,7 +32,7 @@ export default class ItemList extends Component {
     const { peopleList } = this.state;
 
     if (!peopleList) {
-      return <Spinner/>
+      return <Spinner />
     }
 
     const items = this.renderItems(peopleList);
