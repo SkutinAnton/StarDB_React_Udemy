@@ -2,7 +2,7 @@ export default class SwapiService {
 
   api = 'https://swapi.co/api/';
 
-  async getResource(url) {
+  getResource = async (url) => {
     const res = await fetch(`${this.api}${url}`);
     if (!res.ok) {
       throw new Error(`Could not fetch ${this.api}${url}, received ${res.status}`);
@@ -10,32 +10,32 @@ export default class SwapiService {
     return await res.json();
   }
 
-  async getAllPeople() {
+  getAllPeople = async () => {
     const res = await this.getResource(`people`);
     return res.results.map(this.transformPerson);
   }
 
-  async getPerson(id) {
+  getPerson = async (id) => {
     const person = await this.getResource(`people/${id}`);
     return this.transformPerson(person);
   }
 
-  async getAllPlanets() {
+  getAllPlanets = async () => {
     const res = await this.getResource(`planets`);
     return res.results.map(this.transformPlanet);
   }
 
-  async getPlanet(id) {
+  getPlanet = async (id) => {
     const planet = await this.getResource(`planets/${id}`);
     return this.transformPlanet(planet);
   }
 
-  async getAllStarships() {
+  getAllStarships = async () => {
     const res = await this.getResource(`starships`);
     return res.results.map(this.transformStarship);
   }
 
-  async getStarship(id) {
+  getStarship = async (id) => {
     const starship = await this.getResource(`starships/${id}`);
     return this.transformStarship(starship);
   }
@@ -60,8 +60,8 @@ export default class SwapiService {
       id: this.findId(person),
       name: person.name,
       gender: person.gender,
-      birthYear: person.birthYear,
-      eyeColor: person.eyeColor
+      birthYear: person.birth_year,
+      eyeColor: person.eye_color
     }
   }
 
@@ -71,11 +71,11 @@ export default class SwapiService {
       name: starship.name,
       model: starship.model,
       manufacturer: starship.manufacturer,
-      costInCredits: starship.costInCredits,
+      costInCredits: starship.cost_in_credits,
       length: starship.length,
       crew: starship.crew,
       passengers: starship.passengers,
-      cargoCapacity: starship.cargoCapacity
+      cargoCapacity: starship.cargo_capacity
     }
   }
 }
